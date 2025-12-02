@@ -48,7 +48,7 @@ async function initGroupPage() {
     // 👉 Génération locale du lien et copie dans le presse‑papiers
     if (generateBtn) {
       generateBtn.addEventListener("click", async () => {
-        const inviteLink = `${window.location.origin}/invite.html?group=${groupId}`;
+        const inviteLink = `${window.location.origin}/LastProject_front/invite.html?group=${groupId}`;
         inviteLinkEl.textContent = inviteLink;
         try {
           await navigator.clipboard.writeText(inviteLink);
