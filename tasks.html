@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Mes tâches</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <a class="brand" href="dashboard.html">Mini‑Projet</a>
+    <div class="nav-right">
+      <a href="groups.html" class="btn">Groupes</a>
+      <button id="logout-btn" class="btn danger">Déconnexion</button>
+    </div>
+  </nav>
+
+  <main class="container">
+    <!-- Formulaire de création -->
+    <section class="card form-card">
+      <h2>Créer une nouvelle tâche</h2>
+      <form id="task-form">
+        <label for="title">Titre</label>
+        <input type="text" id="title" required>
+
+        <label for="deadline">Échéance (optionnel)</label>
+        <input type="date" id="deadline">
+
+        <button type="submit" class="btn">Créer</button>
+      </form>
+    </section>
+
+    <!-- Liste des tâches -->
+    <section class="card">
+      <h2>Mes tâches</h2>
+      <ul id="task-list" class="list">
+        <li class="muted">Chargement...</li>
+      </ul>
+    </section>
+  </main>
+
+  <script type="module">
+    import { logout } from './js/api.js';
+    const logoutBtn = document.getElementById('logout-btn');
+    if (logoutBtn) logoutBtn.addEventListener('click', logout);
+  </script>
+  <script type="module" src="js/tasks.js"></script>
+</body>
+</html>

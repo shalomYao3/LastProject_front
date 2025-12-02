@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Groupes</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <a class="brand" href="dashboard.html">Mini-Projet</a>
+    <div class="nav-right">
+      <a href="tasks.html" class="btn">Tâches</a>
+      <button id="logout-btn" class="btn danger">Déconnexion</button>
+    </div>
+  </nav>
+
+  <main class="container">
+    <section class="card form-card">
+      <h2>Créer un groupe</h2>
+      <form id="create-group-form">
+        <label for="group-name">Nom du groupe</label>
+        <input type="text" id="group-name" required>
+        <button type="submit" class="btn">Créer</button>
+      </form>
+    </section>
+
+    <section class="card form-card">
+      <h2>Rejoindre un groupe</h2>
+      <form id="join-group-form">
+        <label for="group-id">ID du groupe</label>
+        <input type="number" id="group-id" required>
+        <button type="submit" class="btn secondary">Rejoindre</button>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>Mes groupes</h2>
+      <ul id="group-list" class="list"></ul>
+    </section>
+  </main>
+
+  <script type="module">
+    import { logout } from './js/api.js';
+    const logoutBtn = document.getElementById('logout-btn');
+    if (logoutBtn) logoutBtn.addEventListener('click', logout);
+  </script>
+  <script type="module" src="js/groups.js"></script>
+</body>
+</html>

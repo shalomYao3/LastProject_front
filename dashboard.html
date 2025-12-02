@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Tableau de bord</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <a class="brand" href="dashboard.html">Mini-Projet</a>
+    <div class="nav-right">
+      <a href="tasks.html" class="btn">Tâches</a>
+      <a href="groups.html" class="btn secondary">Groupes</a>
+      <button id="logout-btn" class="btn danger">Déconnexion</button>
+    </div>
+  </nav>
+
+  <main class="container">
+    <section class="card">
+      <h1>Tableau de bord</h1>
+      <p id="welcome" class="muted">Chargement...</p>
+      <div class="grid">
+        <div class="card">
+          <h3>Mes tâches</h3>
+          <p>Créez, modifiez et gérez vos tâches.</p>
+          <a href="tasks.html" class="btn">Aller aux tâches</a>
+        </div>
+        <div class="card">
+          <h3>Mes groupes</h3>
+          <p>Créez des groupes et invitez vos amis.</p>
+          <a href="groups.html" class="btn">Aller aux groupes</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script type="module">
+    import { apiFetch, logout } from './js/api.js';
+    const logoutBtn = document.getElementById('logout-btn');
+    if (logoutBtn) logoutBtn.addEventListener('click', logout);
+
+    async function init() {
+      try {
+        const me = await apiFetch('/auth/me');
+        const welcome = document.getElementById('welcome');
+        welcome.textContent = `Bienvenue ${me.username} 👋`;
+      } catch {
+        // apiFetch handles 401 by redirecting
+      }
+    }
+    init();
+  </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Détails du groupe</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <a class="brand" href="groups.html">← Retour aux groupes</a>
+    <div class="nav-right">
+      <a href="tasks.html" class="btn">Tâches</a>
+      <button id="logout-btn" class="btn danger">Déconnexion</button>
+    </div>
+  </nav>
+
+  <main class="container">
+    <section class="card">
+      <h1 id="group-name">Chargement...</h1>
+
+      <div id="owner-actions" class="actions" style="display:none">
+        <button id="generate-link-btn" class="btn">Générer un lien d'invitation</button>
+        <span id="invite-link" class="muted"></span>
+        <button id="delete-group-btn" class="btn danger">Supprimer le groupe</button>
+      </div>
+
+      <div id="member-actions" class="actions" style="display:none">
+        <button id="leave-group-btn" class="btn secondary">Quitter le groupe</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Membres</h2>
+      <ul id="members" class="list"></ul>
+    </section>
+
+    <section class="card">
+      <h2>Tâches du groupe</h2>
+      <ul id="group-task-list" class="list"></ul>
+      <div class="actions">
+        <input type="number" id="task-name" placeholder="Nom de la tâche" class="input">
+        <button id="add-task-btn" class="btn">Ajouter la tâche au groupe</button>
+      </div>
+    </section>
+  </main>
+
+  <script type="module">
+    import { logout } from './js/api.js';
+    const logoutBtn = document.getElementById('logout-btn');
+    if (logoutBtn) logoutBtn.addEventListener('click', logout);
+  </script>
+  <script type="module" src="js/group-details.js"></script>
+</body>
+</html>
