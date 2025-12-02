@@ -1,7 +1,7 @@
 // api.js — helper pour toutes les requêtes
 // usage : import { apiFetch, getToken, setToken, logout } from './js/api.js'
 
-export const API_URL = "http://127.0.0.1:8000";
+export const API_URL = "https://lastproject-kt0f.onrender.com";
 
 export function getToken() {
   return localStorage.getItem("access_token");
